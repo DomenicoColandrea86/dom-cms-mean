@@ -18,7 +18,8 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+  seo = require('mean-seo');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -105,6 +106,12 @@ module.exports = function(db) {
 	app.use(helmet.contentTypeOptions());
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
+
+  // set mean-seo middleware
+  app.use(seo({
+    cacheClient: 'disk', // Can be 'disk' or 'redis'
+    cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
+  }));
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));

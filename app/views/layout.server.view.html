@@ -14,6 +14,9 @@
 	<meta name="keywords" content="{{keywords}}">
 	<meta name="description" content="{{description}}">
 
+  <!-- MEAN SEO META -->
+  <meta name="fragment" content="!">
+
 	<!-- Facebook META -->
 	<meta property="fb:app_id" content="{{facebookAppId}}">
 	<meta property="og:site_name" content="{{title}}">
@@ -57,7 +60,7 @@
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %} 
+	{% endfor %}
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
